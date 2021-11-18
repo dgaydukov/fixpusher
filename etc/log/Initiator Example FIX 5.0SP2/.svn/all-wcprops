@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/etc/log/Initiator%20Example%20FIX%205.0SP2
+END
+FIXT.1.1-COUNTERPARTY-FIXPUSHER.session
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/etc/log/Initiator%20Example%20FIX%205.0SP2/FIXT.1.1-COUNTERPARTY-FIXPUSHER.session
+END
+FIXT.1.1-COUNTERPARTY-FIXPUSHER.header
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/etc/log/Initiator%20Example%20FIX%205.0SP2/FIXT.1.1-COUNTERPARTY-FIXPUSHER.header
+END
+FIXT.1.1-COUNTERPARTY-FIXPUSHER.body
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/etc/log/Initiator%20Example%20FIX%205.0SP2/FIXT.1.1-COUNTERPARTY-FIXPUSHER.body
+END
+FIXT.1.1-COUNTERPARTY-FIXPUSHER.seqnums
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/etc/log/Initiator%20Example%20FIX%205.0SP2/FIXT.1.1-COUNTERPARTY-FIXPUSHER.seqnums
+END

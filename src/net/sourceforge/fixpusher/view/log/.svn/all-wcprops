@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/log
+END
+LogPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/fixpusher/!svn/ver/7/trunk/FixPusher/src/net/sourceforge/fixpusher/view/log/LogPanel.java
+END
+LogTableRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/log/LogTableRenderer.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/log/package.html
+END
+LogTableHeaderRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/log/LogTableHeaderRenderer.java
+END
+MessageText.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/log/MessageText.java
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use
+END
+AbstractFIXElement.html
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/AbstractFIXElement.html
+END
+FIXComponent.html
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/FIXComponent.html
+END
+FIXField.html
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/FIXField.html
+END
+FIXField.Type.html
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/FIXField.Type.html
+END
+FIXMessage.html
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/FIXMessage.html
+END
+FontProperties.html
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/FontProperties.html
+END
+AbstractFIXElement.FieldType.html
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/AbstractFIXElement.FieldType.html
+END
+FIXFieldValue.html
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/FIXFieldValue.html
+END
+FIXGroup.html
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/doc/html/javadoc/net/sourceforge/fixpusher/model/message/class-use/FIXGroup.html
+END

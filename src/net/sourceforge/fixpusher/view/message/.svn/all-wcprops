@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message
+END
+FIXFieldPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/fixpusher/!svn/ver/7/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/FIXFieldPanel.java
+END
+FIXUnknownFieldPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/FIXUnknownFieldPanel.java
+END
+LastHit.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/LastHit.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/package.html
+END
+FIXComponentPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/FIXComponentPanel.java
+END
+MultipleValueStringCombo.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/MultipleValueStringCombo.java
+END
+FIXMainMessagePanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/fixpusher/!svn/ver/7/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/FIXMainMessagePanel.java
+END
+FieldCheckResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/FieldCheckResult.java
+END
+FIXGroupPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/FIXGroupPanel.java
+END
+FIXMessagePanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/FIXMessagePanel.java
+END
+AbstractFIXPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/message/AbstractFIXPanel.java
+END

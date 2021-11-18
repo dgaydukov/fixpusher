@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/document
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/document/package.html
+END
+DoubleDocument.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/document/DoubleDocument.java
+END
+IntegerDocument.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/document/IntegerDocument.java
+END
+CharDocument.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/fixpusher/!svn/ver/2/trunk/FixPusher/src/net/sourceforge/fixpusher/view/document/CharDocument.java
+END
