@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="dist" name="FIX Pusher">
-	<property location="/usr/java/launch4j" name="launch4j.dir" />
+	<property location="launch4j" name="launch4j.dir" />
 	<property location="src" name="src" />
-	<property location="/home/alex/dist" name="destination" />
+	<property location="output" name="destination" />
 	<property location="${destination}/build" name="build" />
 	<property location="${destination}/dist" name="dist" />
-	<property name="version" value="1.0.2" />
+	<property name="version" value="2.0" />
 
 	<target name="init">
 		<mkdir dir="${build}" />
@@ -104,24 +104,6 @@
 		<jar basedir="${build}" includes="**/*.class,**/*.png" jarfile="${dist}/windows/fixpusher/lib/fixpusher-${version}.jar" />
 
 		<jar basedir="${build}" includes="**/*.class,**/*.png" jarfile="${dist}/mac/FIX Pusher.app/Contents/Resources/Java/lib/fixpusher-${version}.jar" />
-
-		<launch4j>
-
-			<config chdir="." customProcName="true" dontWrapJar="true" headerType="gui" icon="etc/windows/f-logo.ico" outfile="${dist}/windows/fixpusher/FIX Pusher.exe">
-
-				<classPath mainClass="net.sourceforge.fixpusher.view.FIXPusher">
-
-					<cp>./lib/*.jar</cp>
-
-				</classPath>
-
-				<jre minVersion="1.6.0" initialHeapSize="512" maxHeapSize="512">
-					 <opt>-XX:MaxPermSize=256m</opt>
-				</jre>
-
-			</config>
-
-		</launch4j>
 
 		<zip destfile="${dist}/fixpusher-windows-${version}.zip" basedir="${dist}/windows" />
 
