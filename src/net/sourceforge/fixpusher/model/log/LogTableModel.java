@@ -338,12 +338,9 @@ public class LogTableModel extends AbstractTableModel implements FIXMessageFilte
 			
 			case 0:
 				try {
-					
-					return DateFormat.getTimeInstance().format(message.getHeader().getUtcTimeStamp(52)) + " "
-							+ DateFormat.getDateInstance(DateFormat.SHORT).format(message.getHeader().getUtcTimeStamp(52));
+					return message.getHeader().getUtcTimeStamp(52);
 				}
-				catch (final FieldNotFound e) {
-					
+				catch (FieldNotFound ex) {
 					return "?";
 				}
 				
