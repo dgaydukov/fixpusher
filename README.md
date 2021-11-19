@@ -37,7 +37,7 @@ I couldn't build initial project in Intellij, so I have to add a few changes so 
 ```
 
 ### Changes to source code
-* http/https support (you can set `SocketUseSSL` value from the app)
+* http/https support (you can set `SocketUseSSL=Y`, if you miss, default is `N`). For this change I've added `mina-filter-ssl` jar library
 * username/password support (you can set them from the app)
 
 ### TODO
