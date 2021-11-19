@@ -40,3 +40,10 @@ I couldn't build initial project in Intellij, so I have to add a few changes so 
 ### Changes to source code
 * http/https support (you can set `SocketUseSSL` value from the app)
 * username/password support (you can set them from the app)
+
+### TODO
+* improve layout (as you see all 3 new fields don't align nicely)
+* add Jpanel (I've tried to copy-paste, but it failed)
+
+### Local Development
+* when you run from IntelliJ, all data is stored in `conf/fixpusher.xml`, so make sure you don't leak your passwords
