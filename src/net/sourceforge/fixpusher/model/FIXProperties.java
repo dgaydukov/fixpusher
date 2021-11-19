@@ -303,7 +303,7 @@ public class FIXProperties implements FIXMessageFilterListener {
 
 			final Element usernameElement = document.createElement("property");
 			usernameElement.setAttribute("name", "username");
-			usernameElement.setAttribute("value", "john.doe@mail.com");
+			usernameElement.setAttribute("value", "john.doe@gmail.com");
 			newProject.appendChild(usernameElement);
 
 			final Element passwordElement = document.createElement("property");

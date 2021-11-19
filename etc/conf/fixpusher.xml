@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><fixpusher>
 	<last name="Acceptor Example FIX 5.0SP2"/>
 
-	
-	
-	
 <project name="Initiator Example FIX 5.0SP2">
 		<property name="hide_optional_fields" value="false"/>
 		<property name="hide_empty_fields" value="false"/>
@@ -25,7 +22,11 @@
 		<property name="data_dictionary" value="./conf/FIX50SP2.xml"/>
 		<property name="transport_data_dictionary" value="./conf/FIXT11.xml"/>
 		<property name="socket_adress" value="localhost"/>
-	</project><project name="Initiator Example FIX 4.4">
+		<property name="username" value="john.doe@gmail.com"/>
+		<property name="password" value="abc123"/>
+		<property name="socketUseSSL" value="N"/>
+	</project>
+	<project name="Initiator Example FIX 4.4">
 		<property name="hide_optional_fields" value="false"/>
 		<property name="hide_empty_fields" value="false"/>
 		<property name="hide_header" value="false"/>
@@ -46,7 +47,11 @@
 		<property name="data_dictionary" value="./conf/FIX44.xml"/>
 		<property name="transport_data_dictionary" value="./conf/FIXT11.xml"/>
 		<property name="socket_adress" value="localhost"/>
-	</project><project name="Acceptor Example FIX 4.4">
+		<property name="username" value="john.doe@gmail.com"/>
+		<property name="password" value="abc123"/>
+		<property name="socketUseSSL" value="N"/>
+	</project>
+	<project name="Acceptor Example FIX 4.4">
 		<property name="hide_optional_fields" value="false"/>
 		<property name="hide_empty_fields" value="true"/>
 		<property name="hide_header" value="false"/>
@@ -67,7 +72,11 @@
 		<property name="data_dictionary" value="./conf/FIX44.xml"/>
 		<property name="transport_data_dictionary" value="./conf/FIXT11.xml"/>
 		<property name="socket_adress" value="localhost"/>
-	</project><project name="Acceptor Example FIX 5.0SP2">
+		<property name="username" value="john.doe@gmail.com"/>
+		<property name="password" value="abc123"/>
+		<property name="socketUseSSL" value="N"/>
+	</project>
+	<project name="Acceptor Example FIX 5.0SP2">
 		<property name="hide_optional_fields" value="false"/>
 		<property name="hide_empty_fields" value="false"/>
 		<property name="hide_header" value="false"/>
@@ -88,4 +97,5 @@
 		<property name="data_dictionary" value="./conf/FIX50SP2.xml"/>
 		<property name="transport_data_dictionary" value="./conf/FIXT11.xml"/>
 		<property name="socket_adress" value="localhost"/>
-	</project></fixpusher>
+	</project>
+</fixpusher>
