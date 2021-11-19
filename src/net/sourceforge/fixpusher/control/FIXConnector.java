@@ -314,13 +314,16 @@ public class FIXConnector implements Application {
 	 */
 	@Override
 	public void toAdmin(final Message msg, final SessionID sessionID) {
-		try {
-			if (MsgType.LOGON.equals(msg.getHeader().getString(MsgType.FIELD))) {
-				msg.setString(Username.FIELD, fixProperties.getUsername());
-				msg.setString(Password.FIELD, fixProperties.getPassword());
+		// if both username & password are present
+		if (!fixProperties.getUsername().isEmpty() && !fixProperties.getPassword().isEmpty()){
+			try {
+				if (MsgType.LOGON.equals(msg.getHeader().getString(MsgType.FIELD))) {
+					msg.setString(Username.FIELD, fixProperties.getUsername());
+					msg.setString(Password.FIELD, fixProperties.getPassword());
+				}
+			} catch (FieldNotFound ex) {
+				ex.printStackTrace();
 			}
-		} catch (FieldNotFound ex) {
-			ex.printStackTrace();
 		}
 		logTableModel.addMessage(msg);
 	}
