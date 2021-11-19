@@ -11,7 +11,6 @@
 * Add libs to Intellij, so when you work with projects all dependencies are there:
     * go to `project structure` => `libraries` => `add all libraries from inside lib folder`
     * now you can compile project from Intellij, all dependencies are there
-* You can run project from IDE, go to FixPusher.main, right click => Run
 
 ### Changes to project build
 I couldn't build initial project in Intellij, so I have to add a few changes so I can build project:
@@ -46,4 +45,9 @@ I couldn't build initial project in Intellij, so I have to add a few changes so 
 * add Jpanel (I've tried to copy-paste, but it failed)
 
 ### Local Development
-* when you run from IntelliJ, all data is stored in `conf/fixpusher.xml`, so make sure you don't leak your passwords
+* You can run project from IDE, go to FixPusher.main, right click => Run
+* run following commands to copy configs for local development
+```shell script
+cp -r etc/conf .
+cp -r etc/log .
+```
