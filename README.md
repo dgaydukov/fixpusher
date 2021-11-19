@@ -8,6 +8,10 @@
 * add ant plugin to your IDE
 * right-click on `build.xml` (main file for ant building process) -> `Add as Ant Build File`
 * go to `Ant` tab and click `Run` (green button)
+* Add libs to Intellij, so when you work with projects all dependencies are there:
+    * go to `project structure` => `libraries` => `add all libraries from inside lib folder`
+    * now you can compile project from Intellij, all dependencies are there
+* You can run project from IDE, go to FixPusher.main, right click => Run
 
 ### Changes to project build
 I couldn't build initial project in Intellij, so I have to add a few changes so I can build project:
@@ -32,3 +36,7 @@ I couldn't build initial project in Intellij, so I have to add a few changes so 
     </config>
 </launch4j>
 ```
+
+### Changes to source code
+* http/https support (you can set `SocketUseSSL` value from the app)
+* username/password support (you can set them from the app)

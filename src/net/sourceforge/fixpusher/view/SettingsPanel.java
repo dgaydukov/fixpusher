@@ -35,17 +35,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JViewport;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.DocumentEvent;
@@ -151,6 +141,10 @@ public class SettingsPanel extends AbstractMainPanelContent {
 
 	private final ImageIcon warningIcon = new ImageIcon(FIXPusher.class.getResource("/net/sourceforge/fixpusher/view/images/16x16/status_unknown.png"));
 
+	private JTextField usernameField = null;
+	private JTextField passwordField = null;
+	private JTextField socketUseSSLField = null;
+	private JLabel socketUseSSLWarningLabel = null;
 	/**
 	 * Instantiates a new settings panel.
 	 *
@@ -821,7 +815,7 @@ public class SettingsPanel extends AbstractMainPanelContent {
 			}
 		});
 
-		final JLabel socketAdressLabel = new JLabel("Socket adress");
+		final JLabel socketAdressLabel = new JLabel("Socket address");
 		socketAdressLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 		final GridBagConstraints gbc_socketAdressLabel = new GridBagConstraints();
 		gbc_socketAdressLabel.anchor = GridBagConstraints.WEST;
@@ -1246,6 +1240,162 @@ public class SettingsPanel extends AbstractMainPanelContent {
 		gbc_cleanMessageStoreButton.gridy = 10;
 		contentPanel.add(cleanMessageStoreButton, gbc_cleanMessageStoreButton);
 
+
+		//-----------------------------------CREDENTIALS-----------------------------------
+//		final JPanel credentialsPanel = new JPanel() {
+//			private static final long serialVersionUID = 1L;
+//			@Override
+//			protected void paintComponent(final Graphics gra) {
+//				final Graphics2D g = (Graphics2D) gra;
+//				super.paintComponent(g);
+//				final int w = this.getWidth();
+//				final int h = this.getHeight();
+//				final GradientPaint gradientPaint = new GradientPaint(w / 2.F, 0, Color.GRAY, w / 2.F, h, Color.BLACK);
+//				g.setPaint(gradientPaint);
+//				g.fillRect(0, 0, w, h);
+//				getUI().paint(g, this);
+//			}
+//		};
+//		credentialsPanel.setPreferredSize(new Dimension(10, 25));
+//		credentialsPanel.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
+//
+//		final GridBagConstraints gbc_credentialsPanel = new GridBagConstraints();
+//		gbc_credentialsPanel.gridwidth = 9;
+//		gbc_credentialsPanel.insets = new Insets(50, 0, 25, 5);
+//		gbc_credentialsPanel.fill = GridBagConstraints.BOTH;
+//		gbc_credentialsPanel.gridx = 1;
+//		gbc_credentialsPanel.gridy = 11;
+//		contentPanel.add(credentialsPanel, gbc_credentialsPanel);
+//		credentialsPanel.setLayout(new BorderLayout(0, 0));
+//
+//		final JLabel credentialsLabel = new JLabel("Credentials panel");
+//		credentialsLabel.setBorder(new EmptyBorder(0, 5, 0, 0));
+//		credentialsLabel.setForeground(Color.WHITE);
+//		credentialsLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
+//		credentialsLabel.add(credentialsPanel, BorderLayout.WEST);
+
+		final JLabel usernameLabel = new JLabel("username");
+		usernameLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
+		final GridBagConstraints gbc_usernameLabel = new GridBagConstraints();
+		gbc_usernameLabel.anchor = GridBagConstraints.WEST;
+		gbc_usernameLabel.insets = new Insets(0, 5, 5, 5);
+		gbc_usernameLabel.gridx = 1;
+		gbc_usernameLabel.gridy = 12;
+		contentPanel.add(usernameLabel, gbc_usernameLabel);
+
+		usernameField = new JTextField();
+		usernameField.setPreferredSize(new Dimension(4, 25));
+		usernameField.setFont(new Font("Dialog", Font.PLAIN, 12));
+		usernameField.setColumns(10);
+		usernameField.setText(fixProperties.getUsername());
+		final GridBagConstraints gbc_usernameField = new GridBagConstraints();
+		gbc_usernameField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_usernameField.gridwidth = 2;
+		gbc_usernameField.insets = new Insets(0, 0, 5, 5);
+		gbc_usernameField.gridx = 3;
+		gbc_usernameField.gridy = 12;
+		contentPanel.add(usernameField, gbc_usernameField);
+
+		usernameField.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void changedUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void insertUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void removeUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+		});
+
+		final JLabel passwordLabel = new JLabel("password");
+		passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
+		final GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
+		gbc_passwordLabel.anchor = GridBagConstraints.WEST;
+		gbc_passwordLabel.insets = new Insets(0, 5, 5, 5);
+		gbc_passwordLabel.gridx = 5;
+		gbc_passwordLabel.gridy = 12;
+		contentPanel.add(passwordLabel, gbc_passwordLabel);
+
+		passwordField = new JPasswordField();
+		passwordField.setPreferredSize(new Dimension(4, 25));
+		passwordField.setFont(new Font("Dialog", Font.PLAIN, 12));
+		passwordField.setColumns(10);
+		passwordField.setText(fixProperties.getPassword());
+		final GridBagConstraints gbc_passwordField = new GridBagConstraints();
+		gbc_passwordField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordField.gridwidth = 2;
+		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordField.gridx = 6;
+		gbc_passwordField.gridy = 12;
+		contentPanel.add(passwordField, gbc_passwordField);
+
+		passwordField.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void changedUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void insertUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void removeUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+		});
+
+		final JLabel socketUseSSLLabel = new JLabel("socketUseSSL");
+		socketUseSSLLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
+		final GridBagConstraints gbc_socketUseSSLLabel = new GridBagConstraints();
+		gbc_socketUseSSLLabel.anchor = GridBagConstraints.WEST;
+		gbc_socketUseSSLLabel.insets = new Insets(0, 5, 5, 5);
+		gbc_socketUseSSLLabel.gridx = 8;
+		gbc_socketUseSSLLabel.gridy = 12;
+		contentPanel.add(socketUseSSLLabel, gbc_socketUseSSLLabel);
+
+		socketUseSSLWarningLabel = new JLabel();
+		socketUseSSLWarningLabel.setPreferredSize(new Dimension(21, 16));
+		final GridBagConstraints gbc_socketUseSSLWarningLabel = new GridBagConstraints();
+		gbc_socketUseSSLWarningLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_socketUseSSLWarningLabel.anchor = GridBagConstraints.EAST;
+		gbc_socketUseSSLWarningLabel.gridx = 9;
+		gbc_socketUseSSLWarningLabel.gridy = 12;
+		contentPanel.add(socketUseSSLWarningLabel, gbc_socketUseSSLWarningLabel);
+
+		socketUseSSLField = new JTextField();
+		socketUseSSLField.setPreferredSize(new Dimension(4, 25));
+		socketUseSSLField.setFont(new Font("Dialog", Font.PLAIN, 12));
+		socketUseSSLField.setColumns(3);
+		socketUseSSLField.setText(fixProperties.getSocketUseSSL());
+		final GridBagConstraints gbc_socketUseSSLField = new GridBagConstraints();
+		gbc_socketUseSSLField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_socketUseSSLField.gridwidth = 2;
+		gbc_socketUseSSLField.insets = new Insets(0, 0, 5, 5);
+		gbc_socketUseSSLField.gridx = 10;
+		gbc_socketUseSSLField.gridy = 12;
+		contentPanel.add(socketUseSSLField, gbc_socketUseSSLField);
+
+		socketUseSSLField.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void changedUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void insertUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void removeUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+		});
+		//-----------------------------------CREDENTIALS-----------------------------------
+
+
 		final JPanel bottomFillPanel = new JPanel();
 		bottomFillPanel.setOpaque(false);
 		final GridBagConstraints gbc_bottomFillPanel = new GridBagConstraints();
@@ -1635,6 +1785,33 @@ public class SettingsPanel extends AbstractMainPanelContent {
 		if (!fixProperties.getSocketAdress().equals(socketAdressField.getText()))
 			dirty = true;
 
+		// check useSSL, either Y/N allowed
+		valid = true;
+		final String socketUseSSL = socketUseSSLField.getText();
+		if (!"Y".equals(socketUseSSL) && !"N".equals(socketUseSSL)){
+			valid = false;
+		}
+		if (!fixProperties.getSocketUseSSL().equals(socketUseSSLField.getText())){
+			dirty = true;
+		}
+		if (!valid) {
+			socketUseSSLWarningLabel.setToolTipText("Allowed values only Y (https mode) or N (http mode)");
+			socketUseSSLWarningLabel.setIcon(bugIcon);
+		}
+		else {
+			socketUseSSLWarningLabel.setToolTipText(null);
+			socketUseSSLWarningLabel.setIcon(null);
+		}
+		consistent = consistent && valid;
+
+		// update save button for username/password
+		if (!fixProperties.getUsername().equals(usernameField.getText())){
+			dirty = true;
+		}
+		if (!fixProperties.getPassword().equals(passwordField.getText())){
+			dirty = true;
+		}
+
 		setDirty(dirty);
 
 		if (statusText != null)
@@ -1744,6 +1921,10 @@ public class SettingsPanel extends AbstractMainPanelContent {
 		fixProperties.setFileLogPath(fileLogPathField.getText());
 
 		fixProperties.setSocketAdress(socketAdressField.getText());
+
+		fixProperties.setUsername(usernameField.getText());
+		fixProperties.setPassword(passwordField.getText());
+		fixProperties.setSocketUseSSL(socketUseSSLField.getText());
 
 		fixProperties.store();
 

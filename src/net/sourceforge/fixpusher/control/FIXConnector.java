@@ -47,6 +47,9 @@ import quickfix.SessionSettings;
 import quickfix.SocketAcceptor;
 import quickfix.ThreadedSocketInitiator;
 import quickfix.UnsupportedMessageType;
+import quickfix.field.MsgType;
+import quickfix.field.Password;
+import quickfix.field.Username;
 
 /**
  * The Class FIXConnector.
@@ -95,12 +98,14 @@ public class FIXConnector implements Application {
 	 * @throws Exception the exception
 	 */
 	public void connect() throws Exception {
-
 		final StringBuffer stringBuffer = new StringBuffer("[default]\n");
 		stringBuffer.append("FileStorePath=");
 		stringBuffer.append(fixProperties.getFileStorePath());
 		stringBuffer.append("\nFileLogPath=");
 		stringBuffer.append(fixProperties.getFileLogPath());
+
+
+		stringBuffer.append("\nSocketUseSSL=").append(fixProperties.getSocketUseSSL());
 		
 		if (fixProperties.getBeginString().startsWith("FIXT")) {
 			
@@ -129,7 +134,6 @@ public class FIXConnector implements Application {
 			
 			stringBuffer.append("\nSocketConnectHost=");
 			stringBuffer.append(fixProperties.getSocketAdress());
-			stringBuffer.append("");
 			stringBuffer.append("\nSocketConnectPort=");
 			stringBuffer.append(fixProperties.getSocketPort());
 		}
@@ -310,7 +314,14 @@ public class FIXConnector implements Application {
 	 */
 	@Override
 	public void toAdmin(final Message msg, final SessionID sessionID) {
-		
+		try {
+			if (MsgType.LOGON.equals(msg.getHeader().getString(MsgType.FIELD))) {
+				msg.setString(Username.FIELD, fixProperties.getUsername());
+				msg.setString(Password.FIELD, fixProperties.getPassword());
+			}
+		} catch (FieldNotFound ex) {
+			ex.printStackTrace();
+		}
 		logTableModel.addMessage(msg);
 	}
 
@@ -319,7 +330,6 @@ public class FIXConnector implements Application {
 	 */
 	@Override
 	public void toApp(final Message arg0, final SessionID arg1) throws DoNotSend {
-		
 		logTableModel.addMessage(arg0);
 	}
 

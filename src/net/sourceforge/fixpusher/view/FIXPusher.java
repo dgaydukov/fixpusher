@@ -62,7 +62,7 @@ public class FIXPusher extends JFrame {
 	int count = 0;
 
 	/** The version. */
-	public static String version = "1.0.2";
+	public static String version = "2.0";
 
 	/**
 	 * The main method.

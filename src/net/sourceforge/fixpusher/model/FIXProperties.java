@@ -94,6 +94,31 @@ public class FIXProperties implements FIXMessageFilterListener {
 
 	private Element treeWidth = null;
 
+	private Element username;
+	private Element password;
+	private Element socketUseSSL;
+
+	public String getUsername(){
+		return username.getAttribute("value");
+	}
+	public void setUsername(String username){
+		this.username.setAttribute("value", username);
+	}
+
+	public String getPassword(){
+		return password.getAttribute("value");
+	}
+	public void setPassword(String password){
+		this.password.setAttribute("value", password);
+	}
+
+	public String getSocketUseSSL(){
+		return socketUseSSL.getAttribute("value");
+	}
+	public void setSocketUseSSL(String socketUseSSL){
+		this.socketUseSSL.setAttribute("value", socketUseSSL);
+	}
+
 	/**
 	 * Instantiates a new fIX properties.
 	 */
@@ -275,6 +300,21 @@ public class FIXProperties implements FIXMessageFilterListener {
 			socketAdressElement.setAttribute("name", "socket_adress");
 			socketAdressElement.setAttribute("value", "localhost");
 			newProject.appendChild(socketAdressElement);
+
+			final Element usernameElement = document.createElement("property");
+			usernameElement.setAttribute("name", "username");
+			usernameElement.setAttribute("value", "john.doe@mail.com");
+			newProject.appendChild(usernameElement);
+
+			final Element passwordElement = document.createElement("property");
+			passwordElement.setAttribute("name", "password");
+			passwordElement.setAttribute("value", "abc123");
+			newProject.appendChild(passwordElement);
+
+			final Element socketUseSSLElement = document.createElement("property");
+			socketUseSSLElement.setAttribute("name", "socketUseSSL");
+			socketUseSSLElement.setAttribute("value", "N");
+			newProject.appendChild(socketUseSSLElement);
 		}
 
 		final NodeList xmlElementsFIX = document.getElementsByTagName("fixpusher");
@@ -949,6 +989,12 @@ public class FIXProperties implements FIXMessageFilterListener {
 				else if (propertyNode.getAttribute("name").equals("table_height"))
 					tableHeight = propertyNode;
 
+				else if (propertyNode.getAttribute("name").equals("username"))
+					username = propertyNode;
+				else if (propertyNode.getAttribute("name").equals("password"))
+					password = propertyNode;
+				else if (propertyNode.getAttribute("name").equals("socketUseSSL"))
+					socketUseSSL = propertyNode;
 			}
 
 		init();
