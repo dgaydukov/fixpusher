@@ -97,6 +97,7 @@ public class FIXProperties implements FIXMessageFilterListener {
 	private Element username;
 	private Element password;
 	private Element socketUseSSL;
+	private Element useApiKey;
 
 	public String getUsername(){
 		return username.getAttribute("value");
@@ -117,6 +118,13 @@ public class FIXProperties implements FIXMessageFilterListener {
 	}
 	public void setSocketUseSSL(String socketUseSSL){
 		this.socketUseSSL.setAttribute("value", socketUseSSL);
+	}
+
+	public String getUseApiKey(){
+		return useApiKey.getAttribute("value");
+	}
+	public void setUseApiKey(String useApiKey){
+		this.useApiKey.setAttribute("value", useApiKey);
 	}
 
 	/**
@@ -995,6 +1003,8 @@ public class FIXProperties implements FIXMessageFilterListener {
 					password = propertyNode;
 				else if (propertyNode.getAttribute("name").equals("socketUseSSL"))
 					socketUseSSL = propertyNode;
+				else if (propertyNode.getAttribute("name").equals("useApiKey"))
+					useApiKey = propertyNode;
 			}
 
 		init();

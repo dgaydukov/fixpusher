@@ -144,7 +144,9 @@ public class SettingsPanel extends AbstractMainPanelContent {
 	private JTextField usernameField = null;
 	private JTextField passwordField = null;
 	private JTextField socketUseSSLField = null;
+	private JTextField useApiKeyField = null;
 	private JLabel socketUseSSLWarningLabel = null;
+	private JLabel useApiKeyWarningLabel = null;
 	/**
 	 * Instantiates a new settings panel.
 	 *
@@ -1353,8 +1355,8 @@ public class SettingsPanel extends AbstractMainPanelContent {
 		final GridBagConstraints gbc_socketUseSSLLabel = new GridBagConstraints();
 		gbc_socketUseSSLLabel.anchor = GridBagConstraints.WEST;
 		gbc_socketUseSSLLabel.insets = new Insets(0, 5, 5, 5);
-		gbc_socketUseSSLLabel.gridx = 8;
-		gbc_socketUseSSLLabel.gridy = 12;
+		gbc_socketUseSSLLabel.gridx = 1;
+		gbc_socketUseSSLLabel.gridy = 13;
 		contentPanel.add(socketUseSSLLabel, gbc_socketUseSSLLabel);
 
 		socketUseSSLWarningLabel = new JLabel();
@@ -1362,24 +1364,70 @@ public class SettingsPanel extends AbstractMainPanelContent {
 		final GridBagConstraints gbc_socketUseSSLWarningLabel = new GridBagConstraints();
 		gbc_socketUseSSLWarningLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_socketUseSSLWarningLabel.anchor = GridBagConstraints.EAST;
-		gbc_socketUseSSLWarningLabel.gridx = 9;
-		gbc_socketUseSSLWarningLabel.gridy = 12;
+		gbc_socketUseSSLWarningLabel.gridx = 4;
+		gbc_socketUseSSLWarningLabel.gridy = 13;
 		contentPanel.add(socketUseSSLWarningLabel, gbc_socketUseSSLWarningLabel);
 
 		socketUseSSLField = new JTextField();
 		socketUseSSLField.setPreferredSize(new Dimension(4, 25));
 		socketUseSSLField.setFont(new Font("Dialog", Font.PLAIN, 12));
-		socketUseSSLField.setColumns(3);
+		socketUseSSLField.setColumns(2);
 		socketUseSSLField.setText(fixProperties.getSocketUseSSL());
 		final GridBagConstraints gbc_socketUseSSLField = new GridBagConstraints();
 		gbc_socketUseSSLField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_socketUseSSLField.gridwidth = 2;
+		gbc_socketUseSSLField.gridwidth = 1;
 		gbc_socketUseSSLField.insets = new Insets(0, 0, 5, 5);
-		gbc_socketUseSSLField.gridx = 10;
-		gbc_socketUseSSLField.gridy = 12;
+		gbc_socketUseSSLField.gridx = 3;
+		gbc_socketUseSSLField.gridy = 13;
 		contentPanel.add(socketUseSSLField, gbc_socketUseSSLField);
 
 		socketUseSSLField.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void changedUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void insertUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+			@Override
+			public void removeUpdate(final DocumentEvent e) {
+				checkConsistency(true);
+			}
+		});
+
+		final JLabel useApiKeyLabel = new JLabel("useApiKey");
+		useApiKeyLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
+		final GridBagConstraints gbc_useApiKeyLabel = new GridBagConstraints();
+		gbc_useApiKeyLabel.anchor = GridBagConstraints.WEST;
+		gbc_useApiKeyLabel.insets = new Insets(0, 5, 5, 5);
+		gbc_useApiKeyLabel.gridx = 5;
+		gbc_useApiKeyLabel.gridy = 13;
+		contentPanel.add(useApiKeyLabel, gbc_useApiKeyLabel);
+
+		useApiKeyWarningLabel = new JLabel();
+		useApiKeyWarningLabel.setPreferredSize(new Dimension(21, 16));
+		final GridBagConstraints gbc_useApiKeyWarningLabel = new GridBagConstraints();
+		gbc_useApiKeyWarningLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_useApiKeyWarningLabel.anchor = GridBagConstraints.EAST;
+		gbc_useApiKeyWarningLabel.gridx = 8;
+		gbc_useApiKeyWarningLabel.gridy = 13;
+		contentPanel.add(useApiKeyWarningLabel, gbc_useApiKeyWarningLabel);
+
+		useApiKeyField = new JTextField();
+		useApiKeyField.setPreferredSize(new Dimension(4, 25));
+		useApiKeyField.setFont(new Font("Dialog", Font.PLAIN, 12));
+		useApiKeyField.setColumns(2);
+		useApiKeyField.setText(fixProperties.getUseApiKey());
+		final GridBagConstraints gbc_useApiKeyField = new GridBagConstraints();
+		gbc_useApiKeyField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_useApiKeyField.gridwidth = 1;
+		gbc_useApiKeyField.insets = new Insets(0, 0, 5, 5);
+		gbc_useApiKeyField.gridx = 7;
+		gbc_useApiKeyField.gridy = 13;
+		contentPanel.add(useApiKeyField, gbc_useApiKeyField);
+
+		useApiKeyField.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void changedUpdate(final DocumentEvent e) {
 				checkConsistency(true);
@@ -1804,6 +1852,25 @@ public class SettingsPanel extends AbstractMainPanelContent {
 		}
 		consistent = consistent && valid;
 
+		// check useApiKey, either Y/N allowed
+		valid = true;
+		final String useApiKey = useApiKeyField.getText();
+		if (!"Y".equals(useApiKey) && !"N".equals(useApiKey)){
+			valid = false;
+		}
+		if (!fixProperties.getUseApiKey().equals(useApiKeyField.getText())){
+			dirty = true;
+		}
+		if (!valid) {
+			useApiKeyWarningLabel.setToolTipText("Allowed values only Y (use token/secret) or N (use standard username/password)");
+			useApiKeyWarningLabel.setIcon(bugIcon);
+		}
+		else {
+			useApiKeyWarningLabel.setToolTipText(null);
+			useApiKeyWarningLabel.setIcon(null);
+		}
+		consistent = consistent && valid;
+
 		// update save button for username/password
 		if (!fixProperties.getUsername().equals(usernameField.getText())){
 			dirty = true;
@@ -1925,6 +1992,7 @@ public class SettingsPanel extends AbstractMainPanelContent {
 		fixProperties.setUsername(usernameField.getText());
 		fixProperties.setPassword(passwordField.getText());
 		fixProperties.setSocketUseSSL(socketUseSSLField.getText());
+		fixProperties.setUseApiKey(useApiKeyField.getText());
 
 		fixProperties.store();
 

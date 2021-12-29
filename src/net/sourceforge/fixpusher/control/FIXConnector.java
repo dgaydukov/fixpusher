@@ -20,6 +20,8 @@ package net.sourceforge.fixpusher.control;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Vector;
@@ -318,10 +320,23 @@ public class FIXConnector implements Application {
 		if (!fixProperties.getUsername().isEmpty() && !fixProperties.getPassword().isEmpty()){
 			try {
 				if (MsgType.LOGON.equals(msg.getHeader().getString(MsgType.FIELD))) {
-					msg.setString(Username.FIELD, fixProperties.getUsername());
-					msg.setString(Password.FIELD, fixProperties.getPassword());
+					if (fixProperties.getUseApiKey().equals("Y")) {
+						msg.setString(Username.FIELD, fixProperties.getUsername());
+						// compute body as => senderCompId+targetCompId+msgSeqNum+sendingTime
+						final String body = fixProperties.getSenderCompID() +
+								fixProperties.getTargetCompID() +
+								msg.getHeader().getString(34) +
+								msg.getHeader().getString(52);
+						final String rawData = HmacSha384.digest(body, fixProperties.getPassword());
+						msg.setInt(95, rawData.length());
+						msg.setString(96, rawData);
+						msg.setString(20_000, "Y");
+					} else {
+						msg.setString(Username.FIELD, fixProperties.getUsername());
+						msg.setString(Password.FIELD, fixProperties.getPassword());
+					}
 				}
-			} catch (FieldNotFound ex) {
+			} catch (FieldNotFound | NoSuchAlgorithmException | InvalidKeyException ex) {
 				ex.printStackTrace();
 			}
 		}
